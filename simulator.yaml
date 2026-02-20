@@ -1,0 +1,64 @@
+{
+  "simulator": {
+    "name": "kv-sim",
+    "instance_id": "sim-01",
+    "log_level": "INFO"
+  },
+  "profile": {
+    "name": "kv8000",
+    "path": "profiles/kv8000.yaml"
+  },
+  "consistency": {
+    "read_your_writes": false,
+    "io_image_external_write_mode": "DEFER_TO_NEXT_SCAN",
+    "apply_phase": "scan_end"
+  },
+  "scan": {
+    "mode": "step",
+    "period_ms": 10,
+    "on_module_error": "CONTINUE",
+    "on_scan_error_wal": "DISCARD_WAL_FOR_SCAN"
+  },
+  "wal": {
+    "enabled": true,
+    "max_entries": 100000,
+    "retention_sec": 3600,
+    "flush_to_file": false,
+    "file_path": "logs/wal.log",
+    "sync_mode": "buffered"
+  },
+  "locks": {
+    "timeout_ms": 5000,
+    "granularity": "device"
+  },
+  "modules": [
+    "A",
+    "B",
+    "X"
+  ],
+  "adapters": [
+    {
+      "name": "main",
+      "protocol": "tcp_json_v1",
+      "bind_ip": "127.0.0.1",
+      "port": 5500,
+      "max_clients": 10,
+      "timeout_ms": 30000,
+      "readonly": false,
+      "delay": {
+        "enabled": false,
+        "min_ms": 0,
+        "max_ms": 0
+      },
+      "limits": {
+        "max_points_per_request": 1024,
+        "max_frame_bytes": 1048576
+      }
+    }
+  ],
+  "logging": {
+    "file_path": "logs/simulator_debug.log",
+    "max_bytes": 262144,
+    "backup_count": 3
+  }
+}
