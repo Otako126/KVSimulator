@@ -38,6 +38,7 @@ class ScanContext:
 
 class ScanEngine:
     def __init__(self, mem, modules, config: ScanConfig | None = None, logger=None):
+    def __init__(self, mem, modules, config: ScanConfig | None = None):
         self.mem = mem
         self.modules = modules
         self.config = config or ScanConfig()
@@ -99,6 +100,11 @@ class ScanEngine:
         self.mem.end_scan(self._scan_id)
         if self._logger:
             self._logger.debug("scan_end scan_id=%s scan_failed=%s wal_entries_before=%s wal_entries_after=%s", self._scan_id, scan_failed, wal_before, wal_after)
+            self.mem.wal.discard_scan(self._scan_id)
+        self.mem.apply_wal("scan_end", self._scan_id)
+        for hook in self._hooks:
+            hook.on_scan_end(ctx)
+        self.mem.end_scan(self._scan_id)
 
     def step(self) -> None:
         self._run_one()
