@@ -47,5 +47,9 @@ class WalStore:
     def remove_applied(self, scan_id: int) -> None:
         self._entries = [e for e in self._entries if e.target_scan_id > scan_id]
 
+
+    def size(self) -> int:
+        return len(self._entries)
+
     def to_ndjson(self) -> str:
         return "\n".join(json.dumps(asdict(e), ensure_ascii=False) for e in self._entries)

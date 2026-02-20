@@ -5,6 +5,7 @@ from pathlib import Path
 from adapters.tcp_json_v1 import TcpJsonV1Server
 from core.device_memory import DeviceMemory, DeviceMemoryOptions
 from core.scan_engine import ScanConfig, ScanEngine
+from core.sim_logger import build_scan_logger
 from core.wal import WalStore
 from profiles.profile_loader import DeviceProfileLoader
 
@@ -29,6 +30,7 @@ def build_app(config_path: str = "simulator.yaml"):
     for module_name in cfg["modules"]:
         mod = importlib.import_module(f"modules.{module_name}")
         modules.append(mod.Module())
+    scan_logger = build_scan_logger(cfg.get("simulator", {}), cfg.get("logging", {}))
     engine = ScanEngine(
         mem,
         modules,
@@ -38,6 +40,7 @@ def build_app(config_path: str = "simulator.yaml"):
             on_module_error=cfg["scan"]["on_module_error"],
             on_scan_error_wal=cfg["scan"]["on_scan_error_wal"],
         ),
+        logger=scan_logger,
     )
     adapters = []
     for a in cfg["adapters"]:
