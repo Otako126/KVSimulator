@@ -1,0 +1,27 @@
+{
+  "profile": {"name": "kv8000", "version": 1, "description": "KV-8000 default device profile (test-oriented)."},
+  "devices": [
+    {"device_suffix":"R","supported_spaces":["bit","word"],"ranges":{"bit":{"min_address":0,"max_address":31999},"word":{"min_address":0,"max_address":1999}},"scan_consistency_rule":"IO_IMAGE","default_value":0,"writable":true},
+    {"device_suffix":"B","supported_spaces":["bit","word"],"ranges":{"bit":{"min_address":0,"max_address":32767},"word":{"min_address":0,"max_address":2047}},"scan_consistency_rule":"NEXT_SCAN","default_value":0,"writable":true},
+    {"device_suffix":"MR","supported_spaces":["bit","word"],"ranges":{"bit":{"min_address":0,"max_address":63999},"word":{"min_address":0,"max_address":3999}},"scan_consistency_rule":"NEXT_SCAN","default_value":0,"writable":true},
+    {"device_suffix":"LR","supported_spaces":["bit","word"],"ranges":{"bit":{"min_address":0,"max_address":15999},"word":{"min_address":0,"max_address":999}},"scan_consistency_rule":"NEXT_SCAN","default_value":0,"writable":true},
+    {"device_suffix":"CR","supported_spaces":["bit","word"],"ranges":{"bit":{"min_address":0,"max_address":1279},"word":{"min_address":0,"max_address":79}},"scan_consistency_rule":"NEXT_SCAN","default_value":0,"writable":true},
+    {"device_suffix":"VB","supported_spaces":["bit","word"],"ranges":{"bit":{"min_address":0,"max_address":63999},"word":{"min_address":0,"max_address":3999}},"scan_consistency_rule":"NEXT_SCAN","default_value":0,"writable":true},
+    {"device_suffix":"T","supported_spaces":["bit"],"ranges":{"bit":{"min_address":0,"max_address":3999}},"scan_consistency_rule":"NEXT_SCAN","default_value":0,"writable":false},
+    {"device_suffix":"C","supported_spaces":["bit"],"ranges":{"bit":{"min_address":0,"max_address":3999}},"scan_consistency_rule":"NEXT_SCAN","default_value":0,"writable":false},
+    {"device_suffix":"DM","supported_spaces":["word"],"ranges":{"word":{"min_address":0,"max_address":65534}},"scan_consistency_rule":"IMMEDIATE","default_value":0,"writable":true},
+    {"device_suffix":"EM","supported_spaces":["word"],"ranges":{"word":{"min_address":0,"max_address":65534}},"scan_consistency_rule":"IMMEDIATE","default_value":0,"writable":true},
+    {"device_suffix":"FM","supported_spaces":["word"],"ranges":{"word":{"min_address":0,"max_address":32767}},"scan_consistency_rule":"IMMEDIATE","default_value":0,"writable":true},
+    {"device_suffix":"ZF","supported_spaces":["word"],"ranges":{"word":{"min_address":0,"max_address":524287}},"scan_consistency_rule":"IMMEDIATE","default_value":0,"writable":true},
+    {"device_suffix":"TM","supported_spaces":["word"],"ranges":{"word":{"min_address":0,"max_address":511}},"scan_consistency_rule":"IMMEDIATE","default_value":0,"writable":true},
+    {"device_suffix":"CM","supported_spaces":["word"],"ranges":{"word":{"min_address":0,"max_address":7599}},"scan_consistency_rule":"IMMEDIATE","default_value":0,"writable":true},
+    {"device_suffix":"W","supported_spaces":["word"],"ranges":{"word":{"min_address":0,"max_address":32767}},"scan_consistency_rule":"IMMEDIATE","default_value":0,"writable":true},
+    {"device_suffix":"VM","supported_spaces":["word"],"ranges":{"word":{"min_address":0,"max_address":589823}},"scan_consistency_rule":"IMMEDIATE","default_value":0,"writable":true},
+    {"device_suffix":"TS","supported_spaces":["dword"],"ranges":{"dword":{"min_address":0,"max_address":3999}},"scan_consistency_rule":"NEXT_SCAN","default_value":0,"writable":true},
+    {"device_suffix":"CS","supported_spaces":["dword"],"ranges":{"dword":{"min_address":0,"max_address":3999}},"scan_consistency_rule":"NEXT_SCAN","default_value":0,"writable":true},
+    {"device_suffix":"TC","supported_spaces":["dword"],"ranges":{"dword":{"min_address":0,"max_address":3999}},"scan_consistency_rule":"NEXT_SCAN","default_value":0,"writable":false},
+    {"device_suffix":"CC","supported_spaces":["dword"],"ranges":{"dword":{"min_address":0,"max_address":3999}},"scan_consistency_rule":"NEXT_SCAN","default_value":0,"writable":false},
+    {"device_suffix":"Z","supported_spaces":["dword"],"ranges":{"dword":{"min_address":1,"max_address":12}},"scan_consistency_rule":"IMMEDIATE","default_value":0,"writable":true},
+    {"device_suffix":"TRM","supported_spaces":["dword"],"ranges":{"dword":{"min_address":0,"max_address":7}},"scan_consistency_rule":"IMMEDIATE","default_value":0,"writable":false}
+  ]
+}
